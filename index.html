@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> 
+            parse JSON
+        </title>
+            <meta name="parse" content="parse JSON">
+            <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+            <link href="css/reset.css" type="text/css" rel="stylesheet">
+            <link href = "css/main.css" type = "text/css" rel = "stylesheet">
+    </head>
+    <body>
+
+      <div id="open-file">
+        <form enctype="multipart/form-data" method="post">
+            <p>Пожалуйста, загрузите файл JSON</p>
+            <div class="input__wrapper">
+                <input name="file" type="file" name="file" id="input__file" class="input input__file" multiple>
+                <label for="input__file" class="input__file-button">
+                   <span class="input__file-icon-wrapper"><img class="input__file-icon" src="open.png" alt="Выбрать файл" width="25"></span>
+                   <span class="input__file-button-text">Выберите файл</span>
+                </label>
+             </div>
+            <input type="submit" value="обработать">
+        </form>
+      </div>
+        <script>
+            let inputs = document.querySelectorAll('.input__file');
+            Array.prototype.forEach.call(inputs, function (input) {
+              let label = input.nextElementSibling,
+                labelVal = label.querySelector('.input__file-button-text').innerText;
+          
+              input.addEventListener('change', function (e) {
+                let countFiles = '';
+                if (this.files && this.files.length >= 1)
+                  countFiles = this.files.length;
+          
+                if (countFiles)
+                  label.querySelector('.input__file-button-text').innerText = 'Выбрано файлов: ' + countFiles;
+                else
+                  label.querySelector('.input__file-button-text').innerText = labelVal;
+              });
+            });
+        </script>
+    </body>
+</html>
