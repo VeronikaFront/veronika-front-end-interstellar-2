@@ -7,8 +7,14 @@ body{
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  max-width: 290px;
+  max-width: 200px;
   margin-left: 40%;
+}
+
+@media screen and (max-width: 600px) {
+  #open-file{
+     margin-left: 30%;
+  }
 }
 
 p {
@@ -22,7 +28,7 @@ p {
 
 .input__wrapper {
     position: relative;
-    margin: 15px 0;
+    margin-bottom: 15px;
     text-align: center;
   }
    
@@ -76,15 +82,16 @@ p {
     margin: 0 auto;
   }
 
-  input[type=submit] {
+  #reset-file {
     width: 100%;
-    max-width: 290px;
+    max-width: 200px;
     height: 30px;
     font-size: 0.9rem;
     font-weight: 700;
-    padding:5px 15px;
+    padding:0px 0px;
     background:rgb(255, 255, 255);
     border:0 none;
     cursor:pointer;
     border-radius: 3px;
 }
+
