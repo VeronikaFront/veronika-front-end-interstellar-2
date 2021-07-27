@@ -44,17 +44,19 @@ document.getElementById("input__file").addEventListener("change", function() {
       container.append(newContainer);
     }
 
-    for (const button of intern.buttons) {
-      const buttonElement = document.createElement("button");
-      buttonElement.innerText = button.text;
-      container.append(buttonElement);
+    if (intern.buttons != undefined) {
+      for (const button of intern.buttons) {
+        const buttonElement = document.createElement("button");
+        buttonElement.innerText = button.text;
+        container.append(buttonElement);
+      }
     }
 
 
 
     document.getElementById("demo").append(container);
 
-   // document.getElementById("demo").innerHTML = content;
+    
    
   };
   fileread.readAsText(file_to_read);
