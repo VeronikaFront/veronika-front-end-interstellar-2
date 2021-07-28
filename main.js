@@ -15,10 +15,8 @@ document.getElementById("input__file").addEventListener("change", function() {
   
   fileread.onload = function(e) {
     var content = e.target.result;
-    // console.log(content);
-    var intern = JSON.parse(content); // Array of Objects.
-    console.log(intern); 
-    console.log(intern.name);
+    var intern = JSON.parse(content); 
+    
 
     const container = document.createElement("div");
 
@@ -33,16 +31,51 @@ document.getElementById("input__file").addEventListener("change", function() {
         if (typeof value === "string") {
           newElement.innerText = value;
         }
+        
         else {
-          for (const [atributeName, atributeValue] of Object.entries(value)){
-             newElement.setAttribute(atributeName, atributeValue);
+          if (value.colors !== undefined, Array.isArray(value.colors)) {
+            const select = document.createElement("select")
+            for (let i = 0; i < value.colors.length; i++) {
+
+              select.options[i] = new Option((value.colors[i]));
+              
+              //document.body.appendChild(select);
+              newContainer.append(select);
+            }
+            
+          }
+          
+          if (value.technologies !==undefined, Array.isArray(value.technologies)) {
+            const select = document.createElement("select")
+            for (let i = 0; i < value.technologies.length; i++) {
+  
+              
+              select.options[i] = new Option((value.technologies[i]));
+  
+              //document.body.appendChild(select);
+              newContainer.append(select);
+            }
+            
+             select.onclick = () => {
+              console.log('ok')
+            }
+            
+          }
+
+          else {
+            for (const [atributeName, atributeValue] of Object.entries(value)) {
+              newElement.setAttribute(atributeName, atributeValue);
+            }
           }
         }
+        
         newContainer.append(newElement);
+        
 
       }
       container.append(newContainer);
     }
+    
 
     if (intern.buttons != undefined) {
       for (const button of intern.buttons) {
